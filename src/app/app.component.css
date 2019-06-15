@@ -1,0 +1,25 @@
+li::after{
+    content: ","
+}
+li:nth-last-child(1)::after{
+content: "."
+}
+ul{
+    padding-inline-start: 0px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.box-shadow{
+    -webkit-box-shadow: 0px 1px 3px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 3px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 3px -1px rgba(0,0,0,0.75);
+}
+label{
+    font-weight: 500;
+}
+

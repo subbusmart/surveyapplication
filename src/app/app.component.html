@@ -1,0 +1,79 @@
+<div style="padding-bottom: 5%">
+  <div class="container">
+      <div><h3 style="text-align: center;font-family: auto;padding-top:3%">Survey Application</h3></div><br>
+    <div style="width: 60%;margin:auto;" class="card box-shadow">
+      <div class="card-body">
+        <form [formGroup]="surveyForm" style="padding: 0px 60px;">
+            <div><h4 style="text-align: center;font-family: auto;padding-top:2%;color: #ff0081;">Survey Form</h4></div><br>
+          <div>
+            <label for="">What's your name?</label>
+            <input type="text" placeholder="Please write your name" class="form-control text-capitalize" name="name" formControlName="name">
+          </div>
+          <br>
+
+          <div>
+            <label for="">Where are you from?</label>
+            <select id="place" formControlName="place" class="form-control">
+              <option value="">Select</option>
+              <option *ngFor="let data of placeOptions" [ngValue]="data">{{ data.optionText }}</option>
+            </select>
+          </div>
+          <br>
+
+          <div>
+            <label for="">What is your gender?</label>
+            <select id="gender" formControlName="gender" class="form-control">
+              <option value="">Select</option>
+              <option *ngFor="let data of genderOptions" [ngValue]="data">{{ data.optionText }}</option>
+            </select>
+          </div>
+          <br>
+
+          <div>
+            <label for="">Where did you hear about us?</label>
+            <ng-multiselect-dropdown [placeholder]="Select" [data]="referencesList" formControlName="references" [settings]="dropdownSettings"
+              (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+          <br>
+
+          <div style="text-align: center">
+            <button class="btn btn-primary" style="width: 25%;" [disabled]="!surveyForm.valid" (click)="onSubmit(surveyForm.value)">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+ 
+    <div style="width:60%;margin: auto;padding-top: 6%;" *ngIf="displayData">
+      <h3 style="color:green;text-align: center;font-family: serif">Submitted Data</h3>
+      <div>
+        <label>Q : What's your name?</label>
+        <div>
+          <span>A : {{name}}</span>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label>Q : Where are you from?</label>
+        <div>
+          <span> A : {{place}}</span>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label>Q : What is your gender?</label>
+        <div>
+          <span>A : {{gender}}</span>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label>Q : Where did you hear about us?</label>
+        <ul>
+          <span style="float: left;">A : </span>
+          <li *ngFor="let data of referenceData" style="list-style-type: none;float: left;">{{data.item_text}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
